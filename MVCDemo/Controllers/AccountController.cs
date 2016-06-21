@@ -14,7 +14,7 @@ namespace MVCDemo.Controllers
     {
         private DAL.AccountContext db = new DAL.AccountContext();
         // GET: Account
-        //[Authorize]
+        [Authorize]
         public ActionResult Index(string Search)
         {
             List<Models.ScenicInfo> ScenicInfos;
@@ -172,18 +172,18 @@ namespace MVCDemo.Controllers
             return RedirectToAction("IndexUser");
         }
 
-        //[Authorize]
+        [Authorize]
         public ActionResult Add()
         {
             return View();
         }
         [HttpPost]
-        //[ValidateInput(false)]
+        [ValidateInput(false)]
         public ActionResult Add(Models.ScenicInfo acc)
         {
             db.ScenicInfo.Add(acc);
             db.SaveChanges();
-            return RedirectToAction("IndexUser");
+            return RedirectToAction("Index");
         }
     }
 }

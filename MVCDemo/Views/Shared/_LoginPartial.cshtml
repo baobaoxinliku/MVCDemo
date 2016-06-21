@@ -6,8 +6,8 @@
         @Html.AntiForgeryToken()
         {
             <ul class="nav navbar-nav navbar-right">
-                <li>@Html.ActionLink("你好" + User.Identity.Name + "!", "Add", "Article")</li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">注册</a></li>
+                <li>@Html.ActionLink("你好" + User.Identity.Name + "!", "Index", "Account")</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
             </ul>
         }
     }
