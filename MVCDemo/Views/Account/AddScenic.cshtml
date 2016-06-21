@@ -1,9 +1,9 @@
 ﻿@model MVCDemo.Models.ScenicInfo
 @{
-    Layout = "~/Views/Shared/MyLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 @section TitleSection{
-    Add
+    AddScenic
 }
 @section HeaderSection{
     <link href="~/Content/Site.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
 @section ContentBody{
     <div class="body-content container">
         <h2>添加</h2>
-        @using (Html.BeginForm("Add", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+        @using (Html.BeginForm("AddScenic", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
         {
             <div class="form-group">
                 <label for="ScenicName" class="col-sm-2 control-label">景点名称：</label>
@@ -66,7 +66,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">添加</button>
-                    @Html.ActionLink("返回首页", "Index")
+                    @Html.ActionLink("返回首页", "IndexScenic")
                 </div>
             </div>
         } 

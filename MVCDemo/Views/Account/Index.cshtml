@@ -1,46 +1,45 @@
-﻿@model MVCDemo.ViewModels.AccountListViewModel
+﻿@model MVCDemo.ViewModels.IndexViewModel
 @{
-    Layout = "~/Views/Shared/MyLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 @section TitleSection{
     Index
 }
 @section HeaderSection{
     <link href="~/Content/Site.css" rel="stylesheet" />
+    
 }
 @section ContentBody{
-    <div class="container">
-        @using (Html.BeginForm())
-        {
-            <p>
-                请输入您要搜索的景点名称 ： @Html.TextBox("Search")
-                <input type="submit" value="搜索" class="btn btn-default"/>
-            </p>
-        }
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>景点名称</th>
-                    <th>所属国家</th>
-                    <th>所在城市</th>
-                    <th>景点类型</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (MVCDemo.Models.ScenicInfo item in  Model.ScenicInfo)
+    <h2>Index</h2>
+    <div class="row body-content">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item">最新用户</li>
+                @foreach (MVCDemo.Models.UserInfo item in Model.UserInfos)
                 {
-                    <tr>
-                        <td>@item.ScenicName</td>
-                        <td>@item.ScenicCountry</td>
-                        <td>@item.ScenicCity</td>
-                        <td>@item.ScenicType</td>
-                        <td>@Html.ActionLink("详情", "Detail", new { id = item.ScenicID })</td>
-                        <td>@Html.ActionLink("编辑", "Edit", new { id = item.ScenicID })</td>
-                        <td>@Html.ActionLink("删除", "Delete", new { id = item.ScenicID })</td>
-                    </tr>
-                    }
-            </tbody>
-        </table>
+                    <li class="list-group-item">
+                        @Html.ActionLink(@item.UserName, "IndexUser", new { id = item.UserName })
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <h4>最热门景点</h4>
+            <hr />      
+            @foreach (MVCDemo.Models.ScenicInfo item in Model.ScenicInfos)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        景点名字：@Html.ActionLink(@item.ScenicName, "DetailScenic", new { id = item.ScenicID })
+                    </div>
+                    <div class="panel-body">
+                        @Html.Raw(@item.ScenicIntro.Substring(0, (@item.ScenicIntro.Length >= 100) ? 100 : @item.ScenicIntro.Length))         
+                    </div>
+                    <div class="panel-footer">
+                        所属国家： @item.ScenicCountry     地理位置： @item.ScenicAddress
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 }

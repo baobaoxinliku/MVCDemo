@@ -1,9 +1,9 @@
 ﻿@model MVCDemo.Models.ScenicInfo
 @{
-    Layout = "~/Views/Shared/MyLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 @section TitleSection{
-    Delete
+    DeleteScenic
 }
 @section HeaderSection{
     <link href="~/Content/Site.css" rel="stylesheet" />
@@ -40,7 +40,7 @@
         {
             <div>
                 <input type="submit" value="删除" class="btn btn-default"/>
-                @Html.ActionLink("返回首页", "Index")
+                @Html.ActionLink("返回首页", "IndexScenic")
             </div>
         }
 </div>

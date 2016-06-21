@@ -14,8 +14,17 @@ namespace MVCDemo.Controllers
     {
         private DAL.AccountContext db = new DAL.AccountContext();
         // GET: Account
+        
+        public ActionResult Index()
+        {
+            ViewModels.IndexViewModel ivm = new ViewModels.IndexViewModel();
+            ivm.UserInfos = db.UserInfo.OrderByDescending(a => a.UserName).Skip(0).Take(6).ToList();
+            ivm.ScenicInfos = db.ScenicInfo.OrderByDescending(a => a.ScenicName).Skip(0).Take(10).ToList();
+            return View(ivm);
+        }
+
         [Authorize]
-        public ActionResult Index(string Search)
+        public ActionResult IndexScenic(string Search)
         {
             List<Models.ScenicInfo> ScenicInfos;
             if (!string.IsNullOrEmpty(Search))
@@ -30,6 +39,7 @@ namespace MVCDemo.Controllers
             aLVM.ScenicInfo = ScenicInfos;
             return View(aLVM);
         }
+        [Authorize]
         public ActionResult IndexUser(string Search)
         {
             List<Models.UserInfo> UserInfos;
@@ -46,7 +56,7 @@ namespace MVCDemo.Controllers
             return View(aLVM);
         }
 
-        public ActionResult Index1(int? page)
+        public ActionResult IndexScenic1(int? page)
         {
             var acc = db.ScenicInfo;
             int pageNumber = page ?? 1;
@@ -79,7 +89,8 @@ namespace MVCDemo.Controllers
             {
                 ViewBag.LoginState = "登录成功";
                 FormsAuthentication.SetAuthCookie(userinfo.UserName, false);
-                return RedirectToAction("Index");
+                Session["UserID"] = user.First().UserName;
+                return RedirectToAction("IndexScenic");
             }
             else
             {
@@ -107,18 +118,18 @@ namespace MVCDemo.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult DetailScenic(int id)
         {
             Models.ScenicInfo acc = db.ScenicInfo.Find(id);
             return View(acc);
         }
-        public ActionResult DetailUser(int id)
+        public ActionResult DetailUser(int ? id)
         {
             Models.UserInfo acc = db.UserInfo.Find(id);
             return View(acc);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult EditScenic(int id)
         {
             Models.ScenicInfo acc = db.ScenicInfo.Find(id);
             return View(acc);
@@ -130,11 +141,11 @@ namespace MVCDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Models.ScenicInfo acc)
+        public ActionResult EditScenic(Models.ScenicInfo acc)
         {
             db.Entry(acc).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexScenic");
         }
         [HttpPost]
         public ActionResult EditUser(Models.UserInfo acc)
@@ -144,7 +155,7 @@ namespace MVCDemo.Controllers
             return RedirectToAction("IndexUser");
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult DeleteScenic(int id)
         {
             Models.ScenicInfo acc = db.ScenicInfo.Find(id);
             return View(acc);
@@ -155,13 +166,13 @@ namespace MVCDemo.Controllers
             return View(acc);
         }
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost, ActionName("DeleteScenic")]
+        public ActionResult DeleteScenicConfirmed(int id)
         {
             Models.ScenicInfo acc = db.ScenicInfo.Find(id);
             db.ScenicInfo.Remove(acc);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexScenic");
         }
         [HttpPost, ActionName("DeleteUser")]
         public ActionResult DeleteUserConfirmed(int id)
@@ -173,17 +184,29 @@ namespace MVCDemo.Controllers
         }
 
         [Authorize]
-        public ActionResult Add()
+        public ActionResult AddScenic()
         {
             return View();
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Add(Models.ScenicInfo acc)
+        public ActionResult AddScenic(Models.ScenicInfo acc)
         {
             db.ScenicInfo.Add(acc);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexScenic");
+        }
+
+        public ActionResult GetAddAdminLink()
+        {
+            if (User.Identity.Name == "admin")
+            {
+                return PartialView("_AddAdminLink");
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
     }
 }

@@ -203,6 +203,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ueditor\net\Uploader.cs" />
     <Compile Include="ViewModels\AccountListViewModel.cs" />
+    <Compile Include="ViewModels\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -217,14 +218,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\IndexScenic.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\MyLayout.cshtml" />
-    <Content Include="Views\Account\Detail.cshtml" />
-    <Content Include="Views\Account\Edit.cshtml" />
-    <Content Include="Views\Account\Delete.cshtml" />
-    <Content Include="Views\Account\Index1.cshtml" />
+    <Content Include="Views\Account\DetailScenic.cshtml" />
+    <Content Include="Views\Account\EditScenic.cshtml" />
+    <Content Include="Views\Account\DeleteScenic.cshtml" />
+    <Content Include="Views\Account\IndexScenic1.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Ueditor\net\getContent.ashx" />
     <Content Include="Ueditor\net\imageUp.ashx" />
@@ -233,7 +234,10 @@
     <Content Include="Views\Account\IndexUser.cshtml" />
     <Content Include="Views\Account\IndexUser1.cshtml" />
     <Content Include="Views\Account\DeleteUser.cshtml" />
-    <Content Include="Views\Account\Add.cshtml" />
+    <Content Include="Views\Account\AddScenic.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Shared\_AddAdminLink.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

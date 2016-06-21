@@ -7,14 +7,15 @@
     @RenderSection("HeaderSection")
     <style type="text/css">
         .navbar1 {
-            margin-bottom:0px;
+            margin-bottom: 0px;
             position: relative;
             min-height: 50px;
             border: 1px solid transparent;
         }
+
         body {
-            padding-bottom:0px;
-            padding-top:0px;
+            padding-bottom: 0px;
+            padding-top: 0px;
         }
     </style>
 </head>
@@ -35,9 +36,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/Account/Index">首页</a></li>
-                    <li><a href="/Account/IndexScenic">景点列表</a></li>  
+                    <li><a href="/Account/IndexScenic">景点列表</a></li>
+                    @{Html.RenderAction("GetAddAdminLink", "Account"); }
                 </ul>
-            @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial")
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
@@ -47,3 +49,4 @@
     @Html.Partial("Footer")
 </body>
 </html>
+

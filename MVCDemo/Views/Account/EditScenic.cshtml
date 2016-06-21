@@ -1,9 +1,9 @@
 ﻿@model MVCDemo.Models.ScenicInfo
 @{
-    Layout = "~/Views/Shared/MyLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 @section TitleSection{
-    Edit
+    EditScenic
 }
 @section HeaderSection{
     <link href="~/Content/Site.css" rel="stylesheet" />
@@ -40,7 +40,7 @@
                 <dd>@Html.EditorFor(model => model.ScenicIntro)</dd>
             </dl>
             <div>
-                <input type="submit" value="保存" class="btn btn-default"/>@Html.ActionLink("返回首页","Index")
+                <input type="submit" value="保存" class="btn btn-default"/>@Html.ActionLink("返回首页", "IndexScenic")
             </div>
         }
     </div>

@@ -1,6 +1,6 @@
 ﻿@model MVCDemo.Models.ScenicInfo
 @{
-    Layout = "~/Views/Shared/MyLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 @section TitleSection{
     Detail
@@ -36,7 +36,7 @@
             <dd>@Html.DisplayFor(model => model.ScenicIntro)</dd>
         </dl>
         <div>
-            @Html.ActionLink("返回首页", "Index")
+            @Html.ActionLink("返回首页", "IndexScenic")
         </div>
     </div>
 }
