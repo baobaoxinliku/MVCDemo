@@ -1,0 +1,44 @@
+﻿@model MVCDemo.Models.ScenicInfo
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@section TitleSection{
+    Detail
+}
+@section HeaderSection{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
+@section ContentBody{
+    <div class="body-content container">
+        <dl>
+            <dt>景点编号：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicID)</dd>
+
+            <dt><br>景点名称：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicName)</dd>
+
+            <dt><br>所属国家：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicCountry)</dd>
+
+            <dt><br>所在城市：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicCity)</dd>
+
+            <dt><br>地理位置：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicAddress)</dd>
+
+            <dt><br>景点级别：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicLevel)</dd>
+
+            <dt><br>景点类型：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicType)</dd>
+
+            <dt><br>景点介绍：</dt>
+            <dd>@Html.DisplayFor(model => model.ScenicIntro)</dd>
+        </dl>
+        <div>
+            @Html.ActionLink("返回首页", "Index")
+        </div>
+    </div>
+}
+
+

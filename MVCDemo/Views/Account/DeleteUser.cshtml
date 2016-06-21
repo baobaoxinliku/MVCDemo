@@ -1,0 +1,39 @@
+﻿@model MVCDemo.Models.UserInfo
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@section TitleSection{
+    DeleteUser
+}
+@section HeaderSection{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
+@section ContentBody{
+    <div class="body-content container">
+        <h2>确定删除以下信息吗？</h2>
+        <dl>
+            <dt>编号：</dt>
+            <dd>@Html.DisplayFor(model => model.ID)</dd>
+            
+            <dt><br>姓名：</dt>
+            <dd>@Html.DisplayFor(model => model.UserName)</dd>
+
+            <dt><br>密码：</dt>
+            <dd>@Html.DisplayFor(model => model.UserPwd)</dd>
+
+            <dt><br>邮箱：</dt>
+            <dd>@Html.DisplayFor(model => model.UserEmail)</dd>
+
+            <dt><br>地址：</dt>
+            <dd>@Html.DisplayFor(model => model.Address)</dd>
+        </dl>
+        @using (Html.BeginForm())
+        {
+            <div>
+                <input type="submit" value="删除" class="btn btn-default"/>
+                @Html.ActionLink("返回首页", "IndexUser")
+            </div>
+        }
+    </div>
+}
+

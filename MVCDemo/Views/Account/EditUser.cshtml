@@ -1,0 +1,36 @@
+﻿@model MVCDemo.Models.UserInfo
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@section TitleSection{
+    EditUser
+}
+@section HeaderSection{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
+@section ContentBody{
+    <div class="container">
+        <h2>编辑</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model=>model.ID)
+            <dl>
+                <dt>姓名：</dt>
+                <dd>@Html.EditorFor(model => model.UserName)</dd>
+
+                <dt><br />密码：</dt>
+                <dd>@Html.EditorFor(model => model.UserPwd)</dd>
+
+                <dt><br />邮箱：</dt>
+                <dd>@Html.EditorFor(model => model.UserEmail)</dd>
+
+                <dt><br />地址：</dt>
+                <dd>@Html.EditorFor(model => model.Address)</dd>
+            </dl>
+            <div>
+                <input type="submit" value="保存"  class="btn btn-default"/>@Html.ActionLink("返回首页", "IndexUser")
+            </div>
+        }
+    </div>
+}
+

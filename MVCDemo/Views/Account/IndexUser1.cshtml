@@ -1,0 +1,46 @@
+﻿@model PagedList.IPagedList<MVCDemo.Models.UserInfo>
+@using PagedList.Mvc
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@section TitleSection{
+    IndexUser
+}
+@section HeaderSection{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
+@section ContentBody{
+    <div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>密码</th>
+                <th>邮箱</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MVCDemo.Models.UserInfo item in Model)
+        {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.UserName</td>
+                    <td>@item.UserPwd</td>
+                    <td>@item.UserEmail</td>
+                    <td>@Html.ActionLink("详情", "DetailUser", new { id = item.ID })</td>
+                    <td>@Html.ActionLink("编辑", "EditUser", new { id = item.ID })</td>
+                    <td>@Html.ActionLink("删除", "DeleteUser", new { id = item.ID })</td>
+                </tr>
+        }
+        </tbody>
+    </table>
+
+    <div>
+        每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+        @Html.PagedListPager(Model, page => Url.Action("IndexUser1", new { page }))
+    </div>
+</div>
+}
+

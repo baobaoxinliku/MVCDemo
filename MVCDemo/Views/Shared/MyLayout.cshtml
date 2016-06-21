@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>@RenderSection("TitleSection")</title>
+    @RenderSection("HeaderSection")
+    <style type="text/css">
+        .navbar1 {
+            margin-bottom:0px;
+            position: relative;
+            min-height: 50px;
+            border: 1px solid transparent;
+        }
+        body {
+            padding-bottom:0px;
+            padding-top:0px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">旅游景点管理系统</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Account/Index">景点列表</a></li>
+                    <li><a href="/Account/Add">添加景点</a></li>
+                    <li><a href="/Account/IndexUser">用户列表</a></li>     
+                </ul>
+            @Html.Partial("_LoginPartial");
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div>
+        @RenderSection("ContentBody")
+    </div>
+    @Html.Partial("Footer")
+</body>
+</html>

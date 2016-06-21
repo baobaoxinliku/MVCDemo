@@ -1,0 +1,48 @@
+﻿@model MVCDemo.Models.ScenicInfo
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@section TitleSection{
+    Edit
+}
+@section HeaderSection{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
+@section ContentBody{
+    <div class="container">
+        <h2>编辑</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model=>model.ScenicID)
+            <dl>
+                <dt>景点编号：</dt>
+                <dd>@Html.DisplayFor(model => model.ScenicID)</dd>
+
+                <dt><br>景点名称：</dt>
+                <dd>@Html.EditorFor(model => model.ScenicName)</dd>
+
+                <dt><br>所属国家：</dt>
+                <dd>@Html.EditorFor(model => model.ScenicCountry)</dd>
+
+                <dt><br>所在城市：</dt>
+                <dd>@Html.EditorFor(model => model.ScenicCity)</dd>
+
+                <dt><br>地理位置：</dt>
+                <dd>@Html.EditorFor(model => model.ScenicAddress)</dd>
+
+                <dt><br>景点级别：</dt>
+                <dd>@Html.EditorFor(model => model.ScenicLevel)</dd>
+
+                <dt><br>景点类型：</dt>
+                <dd>@Html.EditorFor(model => model.ScenicType)</dd>
+
+                <dt><br>景点介绍：</dt>
+                <dd>@Html.EditorFor(model => model.ScenicIntro)</dd>
+            </dl>
+            <div>
+                <input type="submit" value="保存" class="btn btn-default"/>@Html.ActionLink("返回首页","Index")
+            </div>
+        }
+    </div>
+}
+

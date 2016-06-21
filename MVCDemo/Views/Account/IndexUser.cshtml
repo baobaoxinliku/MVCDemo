@@ -1,0 +1,46 @@
+﻿@model MVCDemo.ViewModels.AccountListViewModel
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@section TitleSection{
+    IndexUser
+}
+@section HeaderSection{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+}
+@section ContentBody{
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            <p>
+                请输入您要搜索的姓名 ： @Html.TextBox("Search" )
+                <input type="submit" value="搜索" class="btn btn-default" />
+            </p>
+        }
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>密码</th>
+                    <th>邮箱</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MVCDemo.Models.UserInfo item in Model.UserInfo)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.UserName</td>
+                        <td>@item.UserPwd</td>
+                        <td>@item.UserEmail</td>
+                        <td>@Html.ActionLink("详情", "DetailUser", new { id = item.ID })</td>
+                        <td>@Html.ActionLink("编辑", "EditUser", new { id = item.ID })</td>
+                        <td>@Html.ActionLink("删除", "DeleteUser", new { id = item.ID })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
