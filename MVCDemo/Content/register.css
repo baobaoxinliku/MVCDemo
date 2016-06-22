@@ -1,0 +1,18 @@
+*{
+	padding:0px;
+	margin:0px;
+}
+
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	background:url(../images/grass.jpg);
+	font-size:13px;
+    color:white;
+}
+.container{
+    height:620px;
+    margin:20px 130px auto 130px;
+}
+img{
+	border:0;
+}
